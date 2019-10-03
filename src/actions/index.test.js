@@ -1,4 +1,4 @@
-import {correctGuess,actionTypes} from './'
+import {correctGuess,actionTypes} from './index'
 
 describe('correctGuess', ()=>{
    it('returns an action with type "CORRECT_GUESS', ()=>{
