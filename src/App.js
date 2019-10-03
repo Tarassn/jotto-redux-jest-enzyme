@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 
+import GuessedWords from "./GuessedWords";
+import Congrats from "./Congrats";
 
 
 export class App extends Component {
-  state = {
-    counter: 0
-  };
 
   render() {
     return (
-        <div className="App">
-
+        <div className="container">
+          <h1>Jotto</h1>
+          <Congrats success={true}/>
+          <GuessedWords guessedWords={[
+            {guessedWord:'train',letterMatchCount:3}
+          ]}/>
         </div>
     );
   }
