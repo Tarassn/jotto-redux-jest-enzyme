@@ -3,13 +3,13 @@ import {shallow} from 'enzyme';
 
 import {findByTestAttr, storeFactory} from "../test/testUtils";
 import Input from "./Input";
+import {guessWord} from "./actions";
 
 const setup = (initialState={}) => {
   const store = storeFactory(initialState);
   const wrapper = shallow(<Input store={store}/>).dive().dive();
   return wrapper;
 };
-setup()
 describe('render', ()=>{
     describe('word has no been guessed',()=>{
         let wrapper;
@@ -51,8 +51,16 @@ describe('render', ()=>{
     });
 
 });
-describe('update state', ()=>{
-    it('', ()=>{
-
+describe('redux props', ()=>{
+    it('has success piece of state as prop', ()=>{
+        const success = true;
+        const wrapper = setup({success});
+        const successProp = wrapper.instance().props.success;
+        expect(successProp).toBe(success);
+    });
+    it('`guessWord` action creator is a function prop' , ()=>{
+        const wrapper = setup();
+        const guessWordProp = wrapper.instance().props.guessWord;
+        expect(guessWordProp).toBeInstanceOf(Function);
     });
 });
